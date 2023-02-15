@@ -1,0 +1,8 @@
+﻿id,name,text,charaAdress,backGroundAdress
+0,ヒツジくん,テキスト表示,Images/eto_remake_hitsuji,Images/haikei
+0,ヒツジくん,クリックでシナリオ進行,-,-
+0,ヒツジくん,画像のクロスフェード,-,Images/grass_field
+0,ヒツジくん,クリックでシナリオ進行,-,-
+0,ヒツジくん,クリックでシナリオ進行,-,-
+1,オオカミくん,キャラクターのフェード,Images/wolf,Images/Ground
+0,ヒツジくん,話しているキャラクターの協調,Images/eto_remake_hitsuji,-
