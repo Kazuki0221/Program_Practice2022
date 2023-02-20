@@ -87,17 +87,6 @@ public class NovelManager : MonoBehaviour
             }
         }
 
-        //for (int i = 0; i < charaImg.Length; i++)
-        //{
-        //    charaImg[i].sprite = Resources.Load<Sprite>(novelData.charaAdress[i]);
-        //    if (i > 0)
-        //    {
-        //        var charaColor = charaImg[i].color;
-        //        charaColor.a = 0;
-        //        charaImg[i].color = charaColor;
-        //    }
-        //}
-
         charaImgs = new Sprite[novelData.charaAdress.Count];
 
         for(int i = 0; i < charaImgs.Length; i++)
@@ -183,9 +172,9 @@ public class NovelManager : MonoBehaviour
 
         if (isChangeCharacter)
         {
+
             var chara1 = charaImg[0];
             var chara2 = charaImg[1];
-            if(chara1.sprite == charaImgs[novelData.id[nowCount]])
             UpdateCharacter(chara1, chara2);
         }
         UpdateText();
