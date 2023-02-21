@@ -37,6 +37,7 @@ public class NovelData
                 id.Add(int.Parse(novelData[i + 1][0]));
                 name.Add(novelData[i + 1][1]);
                 text.Add(novelData[i + 1][2]);
+
                 charaAdress.Add(novelData[i + 1][3]);
                 if (charaAdress[i] != "-")
                 {

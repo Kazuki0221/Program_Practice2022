@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -59,10 +60,11 @@ public class NovelManager : MonoBehaviour
     //Character
     [Header("キャラクター")]
     [SerializeField,Tooltip("表示用イメージ")] Image[] charaImg = default;
+    int imgCount = 0;
     /// <summary>
     /// 画像データ
     /// </summary>
-    Sprite[] charaImgs = default;
+    [SerializeField] List<Sprite> charaImgs = default;
     bool isChangeCharacter = false;
     Color white = Color.white;
     Color gray = Color.gray;
@@ -87,11 +89,13 @@ public class NovelManager : MonoBehaviour
             }
         }
 
-        charaImgs = new Sprite[novelData.charaAdress.Count];
-
-        for(int i = 0; i < charaImgs.Length; i++)
+        foreach(var charaAdress in novelData.charaAdress)
         {
-            charaImgs[i] = Resources.Load<Sprite>(novelData.charaAdress[i]);
+            var img = Resources.Load<Sprite>(charaAdress);
+            if (!charaImgs.Contains(img))
+            {
+                charaImgs.Add(img);
+            }
         }
 
         for (int i = 0; i < charaImg.Length; i++)
@@ -172,7 +176,13 @@ public class NovelManager : MonoBehaviour
 
         if (isChangeCharacter)
         {
-
+            if (charaImg[0].sprite != charaImgs[novelData.id[nowCount]] && charaImg[1].sprite != charaImgs[novelData.id[nowCount]])
+            {
+                charaImg[imgCount % 2].sprite = charaImgs[novelData.id[nowCount]];
+                charaImg[imgCount % 2].color = gray;
+                charaImg[(imgCount + 1) % 2].color = white;
+                imgCount++;
+            }
             var chara1 = charaImg[0];
             var chara2 = charaImg[1];
             UpdateCharacter(chara1, chara2);
