@@ -143,16 +143,30 @@ public class NovelManager : MonoBehaviour
                 }
             }
 
-            if (!beginText)　　　　//文字を最後まで表示するまでは時間はカウントしない
+            if (mode == Mode.Auto)
             {
-                m_time -= elapsedSpeedOfTime;
-            }
+                if (!beginText )    //文字を最後まで表示するまでは時間はカウントしない
+                {
+                    m_time -= elapsedSpeedOfTime;
+                }
 
-            if (mode == Mode.Auto && m_time <= 0 && nowCount < novelData.text.Count - 1)　　　//自動で次のテキストへ
-            {
-                nowCount++;
-                m_time = interval;
-                beginText = true;
+                if (m_time <= 0 && nowCount < novelData.text.Count - 1)   //自動で次のテキストへ
+                {
+                    nowCount++;
+                    m_time = interval;
+                    m_context.text = "";
+                    beginText = true;
+
+                    if (novelData.onBackFade[nowCount])
+                    {
+                        isBackGroundFade = true;
+                    }
+
+                    if (nowCount > 0 && novelData.onCharaChange[nowCount])
+                    {
+                        isChangeCharacter = true;
+                    }
+                }
             }
         }
         if (beginText)
@@ -291,8 +305,9 @@ public class NovelManager : MonoBehaviour
                 chara2.color = c2;
                 isChangeCharacter= false;
             }
+            return;
         }
-        if (isChangeCharacter)
+        else 
         {
             if (c2.a < 1)
             {
@@ -303,7 +318,10 @@ public class NovelManager : MonoBehaviour
 
                 if (c2.a >= 1)
                 {
+                    c2.a = 1;
+                    chara2.color = c2;
                     isChangeCharacter = false;
+                    return;
                 }
             }
             else if (c1 == gray && c2 == white)
@@ -313,6 +331,7 @@ public class NovelManager : MonoBehaviour
                 chara1.color = c1;
                 chara2.color = c2;
                 isChangeCharacter = false;
+                return;
             }
             else
             {
@@ -321,6 +340,7 @@ public class NovelManager : MonoBehaviour
                 chara1.color = c1;
                 chara2.color = c2;
                 isChangeCharacter= false;
+                return;
             }
         }
     }
