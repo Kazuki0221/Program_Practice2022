@@ -108,7 +108,6 @@ public class NovelManager : MonoBehaviour
                 charaImg[i].color = charaColor;
             }
         }
-
     }
     void Update()
     {
@@ -156,7 +155,6 @@ public class NovelManager : MonoBehaviour
                 m_time = interval;
                 beginText = true;
             }
-
         }
         if (beginText)
         {
@@ -245,7 +243,6 @@ public class NovelManager : MonoBehaviour
 
         if (isBackGroundFade)
         {
-
             c1.a -= Time.deltaTime * fadeSpeed;
             c2.a += Time.deltaTime * fadeSpeed;
 
@@ -295,7 +292,6 @@ public class NovelManager : MonoBehaviour
                 chara2.color = c2;
                 isChangeCharacter= false;
             }
-
         }
         if (isChangeCharacter)
         {
@@ -327,9 +323,7 @@ public class NovelManager : MonoBehaviour
                 chara2.color = c2;
                 isChangeCharacter= false;
             }
-
         }
-
     }
 
     public void ClickAutoBtn()
@@ -349,7 +343,6 @@ public class NovelManager : MonoBehaviour
 
     public void ClickSpeedBtn()
     {
-
         if (sMode == Speed.Normal)
         {
             modeButton[1].image.color = gray;

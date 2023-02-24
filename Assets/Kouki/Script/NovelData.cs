@@ -14,7 +14,6 @@ public class NovelData
     public List<bool> onBackFade = new List<bool>();
     public List<bool> onCharaChange = new List<bool>();
 
-
     static void CSVReader()
     {
         csvFile = Resources.Load("NovelText") as TextAsset;
