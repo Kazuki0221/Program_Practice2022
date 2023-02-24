@@ -33,15 +33,15 @@ public class NovelManager : MonoBehaviour
     /// </summary>
     [SerializeField] float interval = 5.0f;         
     float m_time = 0;
-    float elapsedSpeedOfTime = 0.01f;
-    float tempelapsed;
+    float elapsedSpeedOfTime = 0.01f;               //経過スピード変数
+    float tempelapsed;　　　　　　　　　　　　　　　//経過スピード保存用変数
     /// <summary>
     /// 文字を一文字ずつ表示する際の間隔
     /// </summary>
-    [SerializeField] float delayTime = 1.0f;        
-    float delaySpeed = 0.01f;
-    float tempdelaySpeed;
+    [SerializeField] float delayTime = 1.0f;
     float m_delay = 0;
+    float delaySpeed = 0.01f;                       //テキストの表示スピード変数
+    float tempdelaySpeed;                           //テキストの表示スピード保存用変数
     int textNumber = 0;                             //文字列の文字番号
     bool beginText = true;                          //テキストの開始フラグ
     bool isSkip = false;                            //文字スキップのフラグ
@@ -64,10 +64,10 @@ public class NovelManager : MonoBehaviour
     /// <summary>
     /// 画像データ
     /// </summary>
-    [SerializeField] List<Sprite> charaImgs = default;
-    bool isChangeCharacter = false;
-    Color white = Color.white;
-    Color gray = Color.gray;
+    List<Sprite> charaImgs = new List<Sprite>();
+    bool isChangeCharacter = false;           //
+    Color white = Color.white;                //現在話しているキャラの色
+    Color gray = Color.gray;                  //現在話していないキャラの色
 
     void Start()
     {
@@ -88,7 +88,6 @@ public class NovelManager : MonoBehaviour
                 backGrounds[i].color = backColor;
             }
         }
-
         foreach(var charaAdress in novelData.charaAdress)
         {
             var img = Resources.Load<Sprite>(charaAdress);
